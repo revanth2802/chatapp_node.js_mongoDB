@@ -4,58 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time Chat App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <ul id="messages"></ul>
-    <div class="form-container">
-        <form id="form" action="">
-            <input id="username" type="text" placeholder="Username" autocomplete="off" required />
-            <input id="input" type="text" placeholder="Message" autocomplete="off" required />
-            <button>Send</button>
-        </form>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card chat-card">
+                    <div class="card-body">
+                        <ul id="messages" class="list-group chat-messages"></ul>
+                    </div>
+                </div>
+                <div class="form-container mt-3">
+                    <form id="form" enctype="multipart/form-data">
+                        <div class="form-group" id="usernameSection">
+                            <input id="username" type="text" class="form-control" placeholder="Username" autocomplete="off" required>
+                        </div>
+                        <div class="form-group" id="messageSection">
+                            <input id="input" type="text" class="form-control" placeholder="Type your message..." autocomplete="off">
+                            <input id="fileInput" type="file" class="form-control-file mt-2" accept="image/*, .pdf, .docx">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-2">Send</button>
+                    </form>
+                    <button id="clearMessagesBtn" class="btn btn-danger btn-block mt-2">Clear All Messages</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Placeholder for future content or sidebar -->
+            </div>
+        </div>
     </div>
+
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-
-        const form = document.getElementById('form');
-        const usernameInput = document.getElementById('username');
-        const messageInput = document.getElementById('input');
-        const messages = document.getElementById('messages');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = usernameInput.value.trim();
-            const message = messageInput.value.trim();
-            
-            if (username && message) {
-                socket.emit('message', { username, message });
-                messageInput.value = '';
-            }
-        });
-
-        socket.on('init', function(msgs) {
-            for (const msg of msgs) {
-                displayMessage(msg.username, msg.text);
-            }
-            scrollToBottom();
-        });
-
-        socket.on('message', function(msg) {
-            displayMessage(msg.username, msg.text);
-            scrollToBottom();
-        });
-
-        function displayMessage(username, message) {
-            const item = document.createElement('li');
-            item.innerHTML = `<strong>${username}:</strong> ${message}`;
-            messages.appendChild(item);
-        }
-
-        function scrollToBottom() {
-            window.scrollTo(0, document.body.scrollHeight);
-        }
-    </script>
+    <script src="client.js"></script>
+    <!-- Separate JavaScript file for client-side logic -->
 </body>
 </html>

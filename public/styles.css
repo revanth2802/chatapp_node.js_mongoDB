@@ -1,38 +1,46 @@
-body {
-    font-family: Arial, sans-serif;
+/* Custom CSS can be added for further styling if needed */
+
+/* Adjustments for chat messages */
+.chat-card {
+    height: 70vh; /* Set a fixed height for chat messages container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 20px; /* Add some space below the chat messages */
 }
 
-#messages {
-    list-style-type: none;
-    padding: 0;
+.chat-messages {
+    margin-bottom: 0; /* Remove bottom margin from list items */
 }
 
-#messages li {
-    padding: 8px;
-    margin-bottom: 10px;
-    background-color: #f4f4f4;
-    border-radius: 4px;
-}
-
+/* Form container adjustments */
 .form-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background color */
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 5px; /* Rounded corners */
 }
 
-.form-container input[type="text"] {
-    padding: 10px;
-    width: 200px;
+/* Input file style adjustments */
+.form-control-file {
+    height: auto; /* Ensure input file height adjusts automatically */
 }
 
-.form-container button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+/* Button style adjustments */
+.btn-primary {
+    background-color: #007bff; /* Blue primary button */
+    border-color: #007bff; /* Blue border color */
 }
 
-.form-container button:hover {
-    background-color: #45a049;
+.btn-primary:hover {
+    background-color: #0069d9; /* Darker blue on hover */
+    border-color: #0062cc; /* Darker border on hover */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red danger button */
+    border-color: #dc3545; /* Red border color */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Darker red on hover */
+    border-color: #bd2130; /* Darker border on hover */
 }
