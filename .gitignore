@@ -1,3 +1,13 @@
-.env
+# Ignore node_modules
 node_modules/
-public/uploads/
+
+# Ignore logs
+logs
+*.log
+npm-debug.log*
+
+# Ignore environment variables
+.env
+
+# Ignore public/uploads folder
+public/uploads
