@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI; // Ensure this variable is set in your environment or .env file
 
 mongoose.connect(MONGODB_URI, {
